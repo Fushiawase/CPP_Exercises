@@ -1,11 +1,27 @@
 #include <iostream>
+#include <unordered_set>
+
+unordered_set<std::string> make_exit_commands(){
+    unordered_set<std::string> set;
+    set.insert("q");
+    set.insert("quit");
+    set.insert("e");
+    set.insert("exit");
+    return set;
+}
 
 int main()
 {
+    auto exit_commands = make_exit_commands();
+    
     while (true)
     {
-        std::cout << "This is a translator, but it does nothing for now..." << std::endl;
-        std::cin.ignore();
+        std::string input;
+        std::cin >> input;
+
+        if(exit_commands.contains(input))
+            exit(0);
+
     }
 
     return 0;
